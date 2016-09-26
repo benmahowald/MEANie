@@ -20,14 +20,14 @@ myApp.controller( 'whereMyPeeps', [ '$scope', '$http', function( $scope, $http )
   };
   $scope.getRecords = function(){
     console.log('in getRecords');
-    // $.http({
-    //   method: 'GET',
-    //   url: '/getRecords',
-    // }).then( function( response ){
-    //   $scope.allTheRecords = response;
-    //   console.log( $scope.allTheRecords );
-    // }), function myError( response ){
-    //   console.log( response.statusText );
-    // };
+    $http({
+      method: 'GET',
+      url: '/getRecords',
+    }).then( function( response ){
+      $scope.allTheRecords = response.data;
+      console.log( $scope.allTheRecords );
+    }), function myError( error ){
+      console.log( error.statusText );
+    };
   };
 }]);
